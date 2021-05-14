@@ -1,0 +1,15 @@
+body {
+    background-image: url("CC_Airpollution.jpg");
+
+}
+
+table, th, td{
+    border: 1px solid darkblue;
+}
+table {
+    background-color: rgba(255,255,255,0.6);
+    width: 75%;
+
+    border-collapse: collapse;
+}
+
