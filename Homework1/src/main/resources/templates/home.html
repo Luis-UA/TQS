@@ -27,21 +27,22 @@
               </form>
           </div>
         <h1 th:text="${CityName}"></h1>
-          <p>Coordinates: <span th:text="${Lat}"></span> <span th:text="${Long}"></span></p>
-          <p>Last Updated: <span th:text="${ForecastDate}"></span></p>
+          <p><span th:text="${Lat}"></span> <span th:text="${Long}"></span></p>
+          <p><span th:text="${ForecastDate}"></span></p>
 
-          <h2>Air Quality Index: <span th:text="${Aqi}"></span></h2>
-
-        <table>
-            <tr>
-                <th>Dominant Pollutant</th>
-                <th th:each="mapEntry : ${pollutants}"><span th:text="${mapEntry.key}"></span></th>
-            </tr>
-            <tr>
-                <td th:text="${dominantpol}"></td>
-                <td th:each="mapEntry : ${pollutants}"><span th:text="${mapEntry.value}"></span></td>
-            </tr>
-        </table>
+          <h2><span th:text="${Aqi}"></span></h2>
+        <div th:if="${Aqi}">
+            <table>
+                <tr>
+                    <th>Dominant Pollutant</th>
+                    <th th:each="mapEntry : ${pollutants}"><span th:text="${mapEntry.key}"></span></th>
+                </tr>
+                <tr>
+                    <td th:text="${dominantpol}"></td>
+                    <td th:each="mapEntry : ${pollutants}"><span th:text="${mapEntry.value}"></span></td>
+                </tr>
+            </table>
+        </div>
       </div>
 
       <nav class="nav fixed-bottom">

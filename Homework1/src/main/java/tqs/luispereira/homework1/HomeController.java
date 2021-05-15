@@ -16,26 +16,23 @@ public class HomeController {
 
     @GetMapping("/")
     public ModelAndView ind(){
-        return index;
+        return new ModelAndView("home");
     }
 
     @GetMapping("/info/{city}")
     public ModelAndView getdata(@PathVariable("city") String city){
-        AQModel m;
-        if(!service.fillModel(city)) {
-            System.out.println("OOOOF");
-            return index;
-        }else {
-            m = service.getModel();
-            System.out.println("Not from cache "+ city);
+        if(service.fillModel(city)) {
+            index.addObject("CityName", service.getModel().getCityname());
+            index.addObject("Lat", "Coordinates: " + service.getModel().getLatitude());
+            index.addObject("Long", ", " + service.getModel().getLongitude());
+            index.addObject("ForecastDate", "Last Updated: " +service.getModel().getTime());
+            index.addObject("Aqi", "Air Quality Index: "+ service.getModel().getAqi());
+            index.addObject("dominantpol", service.getModel().getDominantpol());
+            index.addObject("pollutants", service.getModel().getPolutents());
+        }else{
+            index = new ModelAndView("home");
+            index.addObject("CityName", "City Not Found!");
         }
-        index.addObject("CityName", m.getCityname());
-        index.addObject("Lat", m.getLatitude());
-        index.addObject("Long", m.getLongitude());
-        index.addObject("ForecastDate", m.getTime());
-        index.addObject("Aqi",m.getAqi());
-        index.addObject("dominantpol",m.getDominantpol());
-        index.addObject("pollutants",m.getPolutents());
         return index;
     }
 }

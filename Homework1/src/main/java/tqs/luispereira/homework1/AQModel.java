@@ -16,14 +16,14 @@ public class AQModel {
     @Override
     public String toString() {
         return "{" +
-                "time:" + time +
-                ", cityname:'" + cityname + '\'' +
-                ", latitude:" + latitude +
-                ", longitude:" + longitude +
-                ", dominantpol:'" + dominantpol + '\'' +
-                ", pollutants:" + polutents +
-                ", aqi:" + aqi +
-                '}';
+                "\"time\":\"" + time +
+                "\", \"cityname\":\"" + cityname +
+                "\", \"latitude\":" + latitude +
+                ", \"longitude\":" + longitude +
+                ", \"dominantpol\":\"" + dominantpol +
+                "\", \"pollutants\":\"" + polutents +
+                "\", \"aqi\":\"" + aqi +
+                "\"}";
     }
 
     private String dominantpol;

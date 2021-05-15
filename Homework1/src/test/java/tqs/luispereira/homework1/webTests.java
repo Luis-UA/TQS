@@ -34,4 +34,14 @@ public class webTests {
         browser.findElement(By.cssSelector(".btn")).click();
         assertThat(browser.findElement(By.cssSelector("h1")).getText(), is("Paris"));
     }
+
+    @Test
+    public void notfound() {
+        browser.get("http://localhost:8080/");
+        browser.manage().window().setSize(new Dimension(1397, 808));
+        browser.findElement(By.id("tbMain")).click();
+        browser.findElement(By.id("tbMain")).sendKeys("braquitolandia");
+        browser.findElement(By.cssSelector(".btn")).click();
+        assertThat(browser.findElement(By.cssSelector("h1")).getText(), is("City Not Found!"));
+    }
 }
